@@ -1,5 +1,5 @@
-Live Sports
-===============================
+# Live Sports
+Pulling live sports data from the MySportsFeeds API
 
 version number: 0.0.1
 author: Zach Manno
