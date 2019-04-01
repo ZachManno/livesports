@@ -1,6 +1,6 @@
 import time
 from livesports import LiveSportsClient
-client = LiveSportsClient(api_key='b2804be3-284c-4ab2-b085-892879')
+client = LiveSportsClient(api_key='your_key')
 
 # Rotating scoreboard example
 scoreboard_index = 0
@@ -10,4 +10,4 @@ while True:
     scoreboard_index = scoreboard_index + 1
     if scoreboard_index == len(client.games_today):
         scoreboard_index = 0
-    time.sleep(1)
+    time.sleep(2)
