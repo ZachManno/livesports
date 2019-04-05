@@ -4,3 +4,5 @@ coverage
 pypi-publisher
 ohmysportsfeedspy==2.0.0
 simplejson
+python-dateutil
+pytz

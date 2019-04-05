@@ -25,7 +25,7 @@ class Scoreboard(object):
         if self.played_status in Scoreboard.FINISHED:
             return self.home_team + ' ' + str(self.home_team_score), self.away_team + ' ' + str(self.away_team_score), 'FINAL'
         if self.played_status == Scoreboard.LIVE:
-            return self.home_team + ' ' + str(self.home_team_score), self.away_team + ' ' + str(self.away_team_score)
+            return self.home_team + ' ' + str(self.home_team_score), self.away_team + ' ' + str(self.away_team_score), ''
         if self.played_status == Scoreboard.UNPLAYED:
             return self.home_team, self.away_team, self.start_time
 

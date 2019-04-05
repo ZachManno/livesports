@@ -1,4 +1,5 @@
-from datetime import date
+from datetime import datetime
+from pytz import timezone
 import os
 from ohmysportsfeedspy import MySportsFeeds
 from livesports.scoreboard import Scoreboard
@@ -7,6 +8,7 @@ class LiveSportsClient(object):
     """
     Initilize by passing in api_key or setting it with the env var LS_API_KEY
     """
+    EASTERN_TIMEZONE = timezone('America/New_York')
 
     def __init__(self, api_key=None):
         if api_key is None:
@@ -20,8 +22,8 @@ class LiveSportsClient(object):
         self.games_today = []
 
     def get_todays_nba_games(self, team_abbrev=None):
-    	todays_date = date.today().strftime('%Y%m%d')
-    	return self.get_daily_games_data_for_date(todays_date, team_abbrev)
+        todays_date = datetime.now(LiveSportsClient.EASTERN_TIMEZONE).strftime('%Y%m%d')
+        return self.get_daily_games_data_for_date(todays_date, team_abbrev)
 
     def get_daily_games_data_for_date(self, the_date, team_abbrev=None):
     	if team_abbrev: #Philly = PHI
@@ -55,8 +57,8 @@ class LiveSportsClient(object):
     def get_scoreboard_for_todays_game(self, team_abbrev):
         todays_game_data = self.get_todays_nba_games(team_abbrev)
         return Scoreboard(
-                    todays_game_data['games'][0]['schedule']['homeTeam']['abbreviation'],
                     todays_game_data['games'][0]['schedule']['awayTeam']['abbreviation'],
+                    todays_game_data['games'][0]['schedule']['homeTeam']['abbreviation'],
                     todays_game_data['games'][0]['schedule']['playedStatus'],
                     todays_game_data['games'][0]['schedule']['startTime'],
                     todays_game_data['games'][0]['score']['awayScoreTotal'],
