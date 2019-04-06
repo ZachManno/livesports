@@ -28,7 +28,7 @@ class GraphicsTest(SampleBase):
 
         blue = graphics.Color(0, 0, 255)
 
-        client = LiveSportsClient(api_key='0d3cad84-66c7-4d02-84c0-77ca9f')
+        client = LiveSportsClient(api_key='my_key')
         scoreboard_index = 0
         client.set_todays_nba_games_list()
         length_of_games_today = len(client.games_today)
